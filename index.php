@@ -15,10 +15,6 @@ function whatIsHappening() {
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 }
-// function validate(){
-    
-// }
-
 
 //your products with their price.
 $products = [
@@ -42,22 +38,67 @@ require 'form-view.php';
 
 // whatIsHappening();
 
-if (!empty($_POST['email']) && !empty($_POST['street']) && !empty($_POST['streetnumber']) && !empty($_POST['city']) && !empty($_POST['zipcode'])){
-    if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-        $email = $_POST['email'];
+function validator(){
+    if(!empty($_POST['email'])){
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            $email = $_POST['email'];
+        }
+        else {
+            $email = 'Your email is not correct!';
+        }
         echo $email;
     }
-    if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
-        $streetnumber = $_POST['streetnumber'];
+    if(!empty($_POST['street'])){
+        if(!filter_var($_POST['street'], FILTER_VALIDATE_INT)){
+            $street = $_POST['street'];
+        } else {
+            $street = 'Street is not correct!';
+        }
+        echo $street;
+    }
+    if(!empty($_POST['streetnumber'])){
+        if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
+            $streetnumber = $_POST['streetnumber'];
+        } else {
+            $streetnumber = 'Street number cant contain letters!';
+        }
         echo $streetnumber;
     }
-    if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
-        $zipcode = $_POST['zipcode'];
+    if(!empty($_POST['city'])){
+        if(!filter_var($_POST['city'], FILTER_VALIDATE_INT)){
+            $city = $_POST['city'];
+        } else {
+            $city = 'City cant contain numbers!';
+        }
+        echo $city;
+    }
+    if(!empty($_POST['zipcode'])){
+        if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
+            $zipcode = $_POST['zipcode'];
+        } else {
+            $zipcode = 'Zipcode cant contain letters!';
+        }
         echo $zipcode;
     }
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-
-    echo $street;
-    echo $city;
 }
+validator();
+
+// if (!empty($_POST['email']) && !empty($_POST['street']) && !empty($_POST['streetnumber']) && !empty($_POST['city']) && !empty($_POST['zipcode'])){
+//     if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+//         $email = $_POST['email'];
+//         echo $email;
+//     }
+//     if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
+//         $streetnumber = $_POST['streetnumber'];
+//         echo $streetnumber;
+//     }
+//     if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
+//         $zipcode = $_POST['zipcode'];
+//         echo $zipcode;
+//     }
+//     $street = $_POST['street'];
+//     $city = $_POST['city'];
+
+//     echo $street;
+//     echo $city;
+// }
