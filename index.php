@@ -32,73 +32,77 @@ $products = [
     ['name' => 'Ice-tea', 'price' => 3],
 ];
 
+
 $totalValue = 0;
 
-require 'form-view.php';
+$isValid = false;
 
-// whatIsHappening();
+// $fields = [
+//     'email' => [
+//         'field_name' => 'email',
+//         'required' => 1,
+//     ],
+//     'city' => [
+//         'field_name' => 'city',
+//         'required' => 1,
+//     ],
+//     'zipcode' => [
+//         'field_name' => 'street',
+//         'required' => 1,
+//     ],
+//     'street' => [
+//         'field_name' => 'street',
+//         'required' => 1,
+//     ],
+//     'streetnumber' => [
+//         'field_name' => 'streetnumber',
+//         'required' => 1,
+//     ],
+// ];
+
 
 function validator(){
+    $isValid = true;
     if(!empty($_POST['email'])){
         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             $email = $_POST['email'];
         }
         else {
             $email = 'Your email is not correct!';
+            $isValid = false;
         }
         echo $email;
-    }
+    } else { $isValid = false; }
     if(!empty($_POST['street'])){
-        if(!filter_var($_POST['street'], FILTER_VALIDATE_INT)){
-            $street = $_POST['street'];
-        } else {
-            $street = 'Street is not correct!';
-        }
+        $street = $_POST['street'];
         echo $street;
-    }
+    } else { $isValid = false; }
     if(!empty($_POST['streetnumber'])){
         if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
             $streetnumber = $_POST['streetnumber'];
         } else {
             $streetnumber = 'Street number cant contain letters!';
+            $isValid = false;
         }
         echo $streetnumber;
-    }
+    } else { $isValid = false; }
     if(!empty($_POST['city'])){
-        if(!filter_var($_POST['city'], FILTER_VALIDATE_INT)){
-            $city = $_POST['city'];
-        } else {
-            $city = 'City cant contain numbers!';
-        }
+        $city = $_POST['city'];
         echo $city;
-    }
+    } else { $isValid = false; }
     if(!empty($_POST['zipcode'])){
         if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
             $zipcode = $_POST['zipcode'];
         } else {
             $zipcode = 'Zipcode cant contain letters!';
+            $isValid = false;
         }
         echo $zipcode;
+    } else { $isValid = false; }
+    if ($isValid == false){
+        // exit();
     }
 }
 validator();
 
-// if (!empty($_POST['email']) && !empty($_POST['street']) && !empty($_POST['streetnumber']) && !empty($_POST['city']) && !empty($_POST['zipcode'])){
-//     if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-//         $email = $_POST['email'];
-//         echo $email;
-//     }
-//     if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
-//         $streetnumber = $_POST['streetnumber'];
-//         echo $streetnumber;
-//     }
-//     if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
-//         $zipcode = $_POST['zipcode'];
-//         echo $zipcode;
-//     }
-//     $street = $_POST['street'];
-//     $city = $_POST['city'];
-
-//     echo $street;
-//     echo $city;
-// }
+require 'form-view.php';

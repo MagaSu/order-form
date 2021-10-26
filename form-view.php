@@ -22,6 +22,13 @@
             </li>
         </ul>
     </nav>
+    
+    <?php if (!$isValid){ ?>
+        <div class="alert alert-danger"  role="alert">
+            Error! Check if you have entered your details correctly.
+       </div>
+    <?php } ?>
+    
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -72,7 +79,6 @@
             
         <a href="index.php"><button type="submit" class="btn btn-primary">Order!</button></a>
     </form>
-
     <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>
 </div>
 
