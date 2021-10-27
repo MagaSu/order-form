@@ -21,14 +21,7 @@
                 <a class="nav-link" href="?food=0">Order drinks</a>
             </li>
         </ul>
-    </nav>
-    
-    <?php if (!$isValid){ ?>
-        <div class="alert alert-danger"  role="alert">
-            Error! Check if you have entered your details correctly.
-       </div>
-    <?php } ?>
-    
+    </nav>    
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">

@@ -3,7 +3,17 @@
 declare(strict_types=1);
 
 //we are going to use session variables so we need to enable sessions
+session_set_cookie_params(0);
 session_start();
+
+include 'components/alert/error.php';
+include 'components/alert/succes.php';
+
+include 'components/getters/getFood.php';
+include 'components/getters/getFields.php';
+
+include 'components/fieldValidator.php';
+include 'components/arrivalTime.php';
 
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -17,92 +27,10 @@ function whatIsHappening() {
 }
 
 //your products with their price.
-$products = [
-    ['name' => 'Club Ham', 'price' => 3.20],
-    ['name' => 'Club Cheese', 'price' => 3],
-    ['name' => 'Club Cheese & Ham', 'price' => 4],
-    ['name' => 'Club Chicken', 'price' => 4],
-    ['name' => 'Club Salmon', 'price' => 5]
-];
+$products = [];
 
-$products = [
-    ['name' => 'Cola', 'price' => 2],
-    ['name' => 'Fanta', 'price' => 2],
-    ['name' => 'Sprite', 'price' => 2],
-    ['name' => 'Ice-tea', 'price' => 3],
-];
-
+getFood($products);
 
 $totalValue = 0;
-
-$isValid = false;
-
-// $fields = [
-//     'email' => [
-//         'field_name' => 'email',
-//         'required' => 1,
-//     ],
-//     'city' => [
-//         'field_name' => 'city',
-//         'required' => 1,
-//     ],
-//     'zipcode' => [
-//         'field_name' => 'street',
-//         'required' => 1,
-//     ],
-//     'street' => [
-//         'field_name' => 'street',
-//         'required' => 1,
-//     ],
-//     'streetnumber' => [
-//         'field_name' => 'streetnumber',
-//         'required' => 1,
-//     ],
-// ];
-
-
-function validator(){
-    $isValid = true;
-    if(!empty($_POST['email'])){
-        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            $email = $_POST['email'];
-        }
-        else {
-            $email = 'Your email is not correct!';
-            $isValid = false;
-        }
-        echo $email;
-    } else { $isValid = false; }
-    if(!empty($_POST['street'])){
-        $street = $_POST['street'];
-        echo $street;
-    } else { $isValid = false; }
-    if(!empty($_POST['streetnumber'])){
-        if(filter_var($_POST['streetnumber'], FILTER_VALIDATE_INT)){
-            $streetnumber = $_POST['streetnumber'];
-        } else {
-            $streetnumber = 'Street number cant contain letters!';
-            $isValid = false;
-        }
-        echo $streetnumber;
-    } else { $isValid = false; }
-    if(!empty($_POST['city'])){
-        $city = $_POST['city'];
-        echo $city;
-    } else { $isValid = false; }
-    if(!empty($_POST['zipcode'])){
-        if(filter_var($_POST['zipcode'], FILTER_VALIDATE_INT)){
-            $zipcode = $_POST['zipcode'];
-        } else {
-            $zipcode = 'Zipcode cant contain letters!';
-            $isValid = false;
-        }
-        echo $zipcode;
-    } else { $isValid = false; }
-    if ($isValid == false){
-        // exit();
-    }
-}
-validator();
 
 require 'form-view.php';
