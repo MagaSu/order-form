@@ -26,7 +26,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
-                <input type="text" id="email" value="<?= $_POST['email'] ?? ''; ?>" name="email" class="form-control"/>
+                <input type="text" id="email" value="<?php echo isset($_SESSION["input0"]) ? $_SESSION['input0'] : (isset($_POST['email']) ? $_POST['email'] : '' ) ?>" name="email" class="form-control"/>
             </div>
             <div></div>
         </div>
@@ -37,21 +37,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" value="<?= $_POST['street'] ?? ''; ?>" class="form-control">
+                    <input type="text" name="street" id="street" value="<?php echo isset($_SESSION["input1"]) ? $_SESSION['input1'] : (isset($_POST['street']) ? $_POST['street'] : '' ) ?>" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" value="<?= $_POST['streetnumber'] ?? ''; ?>" name="streetnumber" class="form-control">
+                    <input type="text" id="streetnumber" value="<?php echo isset($_SESSION["input2"]) ? $_SESSION['input2'] : (isset($_POST['streetnumber']) ? $_POST['streetnumber'] : '' ) ?>" name="streetnumber" class="form-control">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
-                    <input type="text" id="city" value="<?= $_POST['city'] ?? ''; ?>" name="city" class="form-control">
+                    <input type="text" id="city" value="<?php echo isset($_SESSION["input3"]) ? $_SESSION['input3'] : (isset($_POST['city']) ? $_POST['city'] : '' ) ?>" name="city" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" value="<?= $_POST['zipcode'] ?? ''; ?>" name="zipcode" class="form-control">
+                    <input type="text" id="zipcode" value="<?php echo isset($_SESSION["input4"]) ? $_SESSION['input4'] : (isset($_POST['zipcode']) ? $_POST['zipcode'] : '' ) ?>" name="zipcode" class="form-control">
                 </div>
             </div>
         </fieldset>

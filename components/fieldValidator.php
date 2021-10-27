@@ -1,5 +1,5 @@
 <?php
-  function fieldValidator($arr){
+  function validateField($arr){
     global $userEmail;
     global $newTotal;
     global $time;
@@ -71,4 +71,3 @@
       }
     }
   }
-?>

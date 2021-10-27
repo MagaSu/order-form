@@ -6,4 +6,3 @@
       return date('H:i', time() + 1800);
     }
   }
-?>

@@ -5,10 +5,10 @@
     $errors = [];
 
     foreach ($userinfo as $field){
-      if($_POST['field'] != ''){
+      if($_POST["field"] != ''){
         array_push($arrFields, $field);
       } else {
-        array_push($error, ucfirst("$field is required!" . "<br>"));
+        array_push($errors, ucfirst("$field is required!" . "<br>"));
       }
     }
     
@@ -24,4 +24,3 @@
 
     return array('arrFieldsName' => $arrFields, 'arrErros' => $errors);
   }
-?>
